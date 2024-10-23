@@ -1,54 +1,3 @@
-# import requests
-# import plyer
-# import time
-# import datetime
-
-
-# while True:
-
-    
-#     now = datetime.datetime.now()
-#     # print(40*"-")
-#     print(now.time())
-#     # print(40*"-")
-  
-#     response = requests.get('https://m4d.nalog.gov.ru/emchd')
-#     cookies = response.cookies
-    
-#     response.encoding = 'utf-8'
-#     if response.ok:
-#         response = response.text
-#         print(response)
-#         print(len(response))
-#         if len(response) != 2405:
-#                 plyer.notification.notify( message='МЧД ЗАРАБОТАЛ!!!!МЧД ЗАРАБОТАЛ!!!!МЧД ЗАРАБОТАЛ!!!!МЧД ЗАРАБОТАЛ!!!!МЧД ЗАРАБОТАЛ!!!!', app_name='ЕЕЕЕ', title='Ура')
-                
-#                 break
-#     print(cookies)
-#     break
-  
-
-
-
-# import csv
-# with open("C:\\Users\\aselin\\Downloads\\admin.csv", encoding='utf-8') as r_file:
-#     # Создаем объект reader, указываем символ-разделитель ","
-#     file_reader = csv.reader(r_file, delimiter = ",")
-#     # Счетчик для подсчета количества строк и вывода заголовков столбцов
-#     count = 0
-#     # Считывание данных из CSV файла
-#     for row in file_reader:
-#         if count == 0:
-#             # Вывод строки, содержащей заголовки для столбцов
-#             print(f'Файл содержит столбцы: {", ".join(row)}')
-#     #     else:
-#     #         # Вывод строк
-#     #         print(f'    {row[0]} - {row[1]} и он родился в {row[2]} году.')
-#     #     count += 1
-#     # print(f'Всего в файле {count} строк.')
-
-
-
 import os
 import pythoncom
 from threading import Thread
@@ -65,7 +14,7 @@ from email import encoders
 
 Canary_name = 'KeePassXC.exe'
 Default_action = 'delete'
-
+# YEEEESSS
 
 
 def start():
