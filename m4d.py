@@ -12,7 +12,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
-Canary_name = 'KeePassXC.exe'
+Canary_name = 'secret_prog.exe'
 Default_action = 'delete'
 # YEEEESSS
 
@@ -27,7 +27,7 @@ def start():
             
             print(c.Win32_Process(name=Canary_name))
             print("Процесс", Canary_name, "найден. Закрытие приложения.....")
-            os.system('taskkill /im '+Canary_name)
+            os.system('taskkill /f /im ' + Canary_name + ' > NUL 2>&1')
             print('Закрыто')
             return True
         else:
@@ -165,9 +165,9 @@ def observer():
 
     print(opened_Windows)
 
-observer()
 
 status = start()
+print(status)
 
 
 
