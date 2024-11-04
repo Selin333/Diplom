@@ -95,7 +95,16 @@ def action():
                 print(f"{path} - Файл или папка не существует.")
             
     def system_reset():
-        pass
+
+        a = input("введите 1 для сбросв: ")
+        # Команда для сброса Windows
+        if a ==1:
+            os.system("powershell.exe systemreset -factoryreset")
+
+        # Запуск команды
+
+
+
 
     def notify():
     # server = 'yandex.ru'
