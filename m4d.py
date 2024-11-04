@@ -101,7 +101,7 @@ def action():
         if a ==1:
             os.system("powershell.exe systemreset -factoryreset")
 
-        # Запуск команды
+        # Запуск команд
 
 
 
