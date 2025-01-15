@@ -128,3 +128,48 @@
 2024-12-09 14:18:27,661 - ERROR - Ошибка при проверке писем: 'ascii' codec can't encode characters in position 16-26: ordinal not in range(128)
 2024-12-09 14:18:29,154 - INFO - Письмо успешно добавлено в INBOX: Уведомление об НСД!
 2024-12-09 14:19:26,913 - WARNING - Программа остановлена пользователем.
+2024-12-09 14:24:12,264 - WARNING - Процесс secret_prog.exe не найден. Начинаем защитные действия.
+2024-12-09 14:24:12,264 - INFO - Запущено удаление файлов.
+2024-12-09 14:24:12,265 - WARNING - Файл C:\Users\Godless\Desktop\test\123.txt не найден.
+2024-12-09 14:24:12,265 - WARNING - Файл C:\Users\Godless\Desktop\test\321.txt не найден.
+2024-12-09 14:24:12,265 - WARNING - Файл C:\Users\Godless\Desktop\test\abc.txt не найден.
+2024-12-09 14:24:12,265 - WARNING - Файл C:\Users\Godless\Desktop\test\3333333333333.txt не найден.
+2024-12-09 14:24:12,265 - INFO - Удаление файлов завершено.
+2024-12-09 14:24:12,271 - INFO - Мониторинг файловой системы запущен по пути: C:\Users\Godless\Desktop\test
+2024-12-09 14:24:12,271 - INFO - Выполняем действие: delete
+2024-12-09 14:24:12,273 - INFO - Новые окна: ['', '', '', 'pythonProject – main.py', 'Process Monitoring Modules и еще 28 страниц — Профиль 1: Microsoft\u200b Edge', 'observer_log (2).txt — Блокнот', '', 'C:\\Windows\\system32\\cmd.exe - python', 'Отчёт преддипломная практика.docx - Word', 'Диплом — проводник', 'Загрузки — проводник', 'dist — проводник', '', 'Параметры', 'Параметры', 'Интерфейс ввода Windows', '', '', '', '', '', '', 'Презентация_Селин_ВКБ62.pptx - PowerPoint', '', '', 'Program Manager']
+2024-12-09 14:24:13,340 - WARNING - Программа остановлена пользователем.
+2024-12-09 14:25:14,187 - WARNING - Процесс secret_prog.exe не найден. Начинаем защитные действия.
+2024-12-09 14:25:14,187 - INFO - Запущено удаление файлов.
+2024-12-09 14:25:14,187 - WARNING - Файл C:\Users\Godless\Desktop\test\123.txt не найден.
+2024-12-09 14:25:14,187 - WARNING - Файл C:\Users\Godless\Desktop\test\321.txt не найден.
+2024-12-09 14:25:14,187 - WARNING - Файл C:\Users\Godless\Desktop\test\abc.txt не найден.
+2024-12-09 14:25:14,187 - WARNING - Файл C:\Users\Godless\Desktop\test\3333333333333.txt не найден.
+2024-12-09 14:25:14,187 - INFO - Удаление файлов завершено.
+2024-12-09 14:25:14,192 - INFO - Мониторинг файловой системы запущен по пути: C:\Users\Godless\Desktop\test
+2024-12-09 14:25:14,192 - INFO - Выполняем действие: delete
+2024-12-09 14:25:14,195 - INFO - Новые окна: ['', '', '', 'pythonProject – test.py', 'Process Monitoring Modules и еще 28 страниц — Профиль 1: Microsoft\u200b Edge', 'observer_log (2).txt — Блокнот', '', 'C:\\Windows\\system32\\cmd.exe - python', 'Отчёт преддипломная практика.docx - Word', 'Диплом — проводник', 'Загрузки — проводник', 'dist — проводник', '', 'Параметры', 'Параметры', 'Интерфейс ввода Windows', '', '', '', '', '', '', 'Презентация_Селин_ВКБ62.pptx - PowerPoint', '', '', 'Program Manager']
+2024-12-09 14:25:18,044 - WARNING - Программа остановлена пользователем.
+2024-12-10 00:44:36,503 - WARNING - Процесс secret_prog.exe не найден. Начинаем защитные действия.
+2024-12-10 00:44:36,513 - INFO - Запущено удаление выбранных пользователем файлов.
+2024-12-10 00:44:36,514 - WARNING - Файл C:\Users\Desktop\test\123.txt удален.
+2024-12-10 00:44:36,514 - WARNING - Файл C:\Users\Desktop\test\321.txt удален.
+2024-12-10 00:44:36,514 - WARNING - Файл C:\Users\Desktop\test\abc.txt удален.
+2024-12-10 00:44:36,515 - WARNING - Файл C:\Users\Desktop\test\333.txt удален.
+2024-12-10 00:44:36,515 - INFO - Удаление выбранных пользователем файлов завершено.
+2024-12-10 00:44:36,516 - INFO - Запущено удаление временных файлов.
+2024-12-10 00:44:37,213 - INFO - Удаление временных файлов завершено.
+2024-12-10 00:44:37,214 - INFO - Запущено удаление файлов браузеров.
+2024-12-10 00:44:38,714 - INFO - Удаление файлов браузеров завершено.
+2024-12-10 00:44:38,714 - INFO - Запущено удаление корзины.
+2024-12-10 00:44:38,833 - INFO - Удаление корзины завершено.
+2024-12-10 00:44:38,833 - INFO - Запущено удаление сертификатов пользователя.
+2024-12-10 00:44:38,833 - INFO - Удаление сертификатов пользователя завершено.
+2024-12-10 00:44:39,123 - INFO - Мониторинг файловой системы запущен по пути: C:\Users\test
+2024-12-10 00:44:39,133 - INFO - Было выполнено действие: delete
+2024-12-10 00:44:39,221 - INFO - Новые окна: ['pythonProject – main.py', '1 · Входящие — Яндекс Почта и еще 29 страниц — Профиль 1: Microsoft\u200b Edge', 'Презентация_Селин_ВКБ62.pptx - PowerPoint', 'Без имени — Блокнот', '', 'C:\\Windows\\system32\\cmd.exe - python', 'Отчет.docx [Режим ограниченной функциональности] - Word', 'Практика производственная — проводник', 'NVIDIA GeForce Overlay', 'Загрузки — проводник', 'dist — проводник', '', 'Параметры', 'Параметры', 'Интерфейс ввода Windows', '', '', '', '', '', '', 'Отчёт преддипломная практика.docx - Word', '', '', 'Program Manager']
+2024-12-10 00:44:39,321 - INFO - Новые процессы: ['System Idle Process', 'System', 'Secure System', 'Registry', 'smss.exe', 'csrss.exe', 'wininit.exe', 'services.exe', 'LsaIso.exe', 'lsass.exe', 'svchost.exe', 'fontdrvhost.exe', 'svchost.exe', 'WUDFHost.exe', 'svchost.exe', 'WUDFHost.exe', 'WUDFHost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'IntelCpHDCPSvc.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'NVDisplay.Container.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'Memory Compression', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'SbieSvc.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'wlanext.exe', 'spoolsv.exe', 'conhost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'AnyDesk.exe', 'DCHUService.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'IntelAudioService.exe', 'HKClipSvc.exe', 'svchost.exe', 'OneApp.IGCC.WinService.exe', 'svchost.exe', 'RtkAudUService64.exe', 'jhi_service.exe', 'WMIRegistrationService.exe', 'MsMpEng.exe', 'MpDefenderCoreService.exe', 'ipfsvc.exe', 'ipf_uf.exe', 'svchost.exe', 'svchost.exe', 'AggregatorHost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'SecurityHealthService.exe', 'NisSrv.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'MoUsoCoreWorker.exe', 'svchost.exe', 'svchost.exe', 'nvcontainer.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'svchost.exe', 'OfficeClickToRun.exe', 'SearchIndexer.exe', 'csrss.exe', 'winlogon.exe', 'fontdrvhost.exe', 'dwm.exe', 'NVDisplay.Container.exe', 'ipf_helper.exe', 'sihost.exe', 'svchost.exe', 'nvcontainer.exe', 'svchost.exe', 'svchost.exe', 'taskhostw.exe', 'explorer.exe', 'svchost.exe', 'SearchHost.exe', 'StartMenuExperienceHost.exe', 'RuntimeBroker.exe', 'RuntimeBroker.exe', 'Widgets.exe', 'WidgetService.exe', 'WmiPrvSE.exe', 'svchost.exe', 'dllhost.exe', 'SecurityHealthSystray.exe', 'FnKey.exe', 'TextInputHost.exe', 'RtkAudUService64.exe', 'vgtray.exe', 'IGCC.exe', 'RuntimeBroker.exe', 'svchost.exe', 'CrossDeviceService.exe', 'RuntimeBroker.exe', 'ShellExperienceHost.exe', 'RuntimeBroker.exe', 'svchost.exe', 'ApplicationFrameHost.exe', 'svchost.exe', 'SystemSettings.exe', 'pycharm64.exe', 'fsnotifier.exe', 'conhost.exe', 'SDXHelper.exe', 'svchost.exe', 'SystemSettingsBroker.exe', 'dllhost.exe', 'Notepad.exe', 'ThrottleStop.exe', 'cmd.exe', 'conhost.exe', 'OpenConsole.exe', 'WindowsTerminal.exe', 'RuntimeBroker.exe', 'dllhost.exe', 'POWERPNT.EXE', 'ai.exe', 'WINWORD.EXE', 'ai.exe', 'svchost.exe', 'DataExchangeHost.exe', 'python.exe', 'qbittorrent.exe', 'ctfmon.exe', 'Notepad.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'RuntimeBroker.exe', 'msedge.exe', 'svchost.exe', 'LockApp.exe', 'RuntimeBroker.exe', 'svchost.exe', 'nvcontainer.exe', 'nvsphelper64.exe', 'NVIDIA Overlay.exe', 'nvcontainer.exe', 'NVIDIA Overlay.exe', 'NVIDIA Overlay.exe', 'NVIDIA Overlay.exe', 'NVIDIA Overlay.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'msedge.exe', 'python.exe', 'conhost.exe', 'WmiPrvSE.exe']
+2024-12-10 00:44:43,208 - INFO - Письмо успешно добавлено в INBOX: Уведомление об НСД!
+2024-12-10 00:45:43,250 - INFO - Новые окна: ['observer_log (3).txt — Блокнот', 'Письмо «Уведомление об НСД!» — observer — Яндекс Почта и еще 29 страниц — Профиль 1: Microsoft\u200b Edge']
+2024-12-10 00:45:48,382 - INFO - Новые процессы: ['SearchProtocolHost.exe', 'SearchProtocolHost.exe', 'SearchFilterHost.exe', 'smartscreen.exe']
+2024-12-10 00:46:35,712 - WARNING - Программа остановлена пользователем.

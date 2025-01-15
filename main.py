@@ -11,10 +11,7 @@ Canary_name = "secret_prog.exe"
 Default_action = "delete"
 
 def check_canary():
-    """
-    Проверяет наличие канарейского процесса.
-    Если процесс найден, программа завершает работу.
-    """
+
     pythoncom.CoInitialize()
     c = wmi.WMI()
     try:
