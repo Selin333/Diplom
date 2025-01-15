@@ -3,8 +3,10 @@ import subprocess
 from observer_notify import log_action
 import pyautogui
 import time
+import ctypes
+import threading
 
-# Путь к SDelete (если не в PATH, укажите полный путь к исполняемому файлу)
+
 SDELETE_PATH = "sdelete64.exe"
 
 # Папки и файлы для защиты по браузерам
@@ -87,6 +89,20 @@ BROWSERS_DATA = {
     }
 }
 
+
+def block_input(duration):
+    """
+    Полностью блокирует ввод с клавиатуры и мыши на указанное время.
+
+    :param duration: Время блокировки в секундах
+    """
+    try:
+        ctypes.windll.user32.BlockInput(True)  # Блокирует ввод
+        time.sleep(duration)  # Ожидает завершения времени
+    finally:
+        ctypes.windll.user32.BlockInput(False)  # Гарантированно разблокирует ввод
+
+
 def secure_delete_with_sdelete(file_path, passes=3):
     """
     Надежно удаляет файл с использованием SDelete.
@@ -96,7 +112,7 @@ def secure_delete_with_sdelete(file_path, passes=3):
     """
     if os.path.exists(file_path):
         try:
-            # Запускаем SDelete с указанным количеством перезаписей
+
             subprocess.run([SDELETE_PATH, "-p", str(passes), file_path], check=True)
             log_action(f"Файл {file_path} успешно удалён с помощью SDelete.")
         except subprocess.CalledProcessError as e:
@@ -106,25 +122,36 @@ def secure_delete_with_sdelete(file_path, passes=3):
     else:
         log_action(f"Файл {file_path} не найден.", level="WARNING")
 
+
 def reset_system():
     """
-    Выполняет сброс ОС до заводских настроек.
+    Выполняет сброс ОС до заводских настроек с полной блокировкой ввода.
     """
     try:
-        subprocess.run(["systemreset", "-factoryreset"], check=True)
-        log_action("Сброс ОС до заводских настроек")
-        time.sleep(4)
-        pyautogui.moveTo(739, 446)  # Замените на координаты кнопки
-        pyautogui.click()
+        log_action("Сброс ОС до заводских настроек начат")
 
-        # Если требуется, добавьте последующие шаги для подтверждения
+        # Блокируем ввод
+        block_input_duration = 20
+        block_thread = threading.Thread(target=block_input, args=(block_input_duration,))
+        block_thread.start()
+
+        # Запускаем команду сброса
+        os.system("powershell.exe systemreset -factoryreset")
+        time.sleep(4)
+
+        # Эмуляция нажатия кнопок
+        pyautogui.moveTo(739, 446)  # Замените на координаты кнопки "Далее"
+        # pyautogui.click()
         time.sleep(2)
-        pyautogui.moveTo(832, 431)  # Замените на координаты следующей кнопки
-        pyautogui.click()
-    except subprocess.CalledProcessError as e:
+        pyautogui.moveTo(832, 431)  # Замените на координаты кнопки подтверждения
+        # pyautogui.click()
+
+        log_action("Сброс ОС подтверждён")
+    except Exception as e:
         log_action(f"Ошибка при выполнении сброса ОС: {e}", level="ERROR")
-    except FileNotFoundError:
-        log_action("Команда systemreset не найдена. Убедитесь, что вы используете Windows 10 или выше.", level="ERROR")
+    finally:
+        ctypes.windll.user32.BlockInput(False)  # Разблокируем ввод
+
 
 def cover_file(file_path):
     """
@@ -133,6 +160,7 @@ def cover_file(file_path):
     :param file_path: Путь к файлу для создания ложного содержимого
     """
     try:
+        secure_delete_with_sdelete(file_path)
         file_extension = os.path.splitext(file_path)[1].lower()
         fake_content = ""
 
@@ -152,48 +180,121 @@ def cover_file(file_path):
     except Exception as e:
         log_action(f"Ошибка при создании ложного файла {file_path}: {e}", level="ERROR")
 
+
 def delete_temp_files():
     """
-    Удаляет временные файлы Windows.
+    Удаляет все файлы и папки внутри %TEMP% с использованием SDelete, оставляя саму папку.
     """
+    temp_dir = os.getenv('TEMP')
+    if not temp_dir:
+        log_action("Не удалось получить путь к TEMP.", level="ERROR")
+        return
+
     try:
-        temp_dir = os.getenv('TEMP')
-        subprocess.run([SDELETE_PATH, "-p", "3", temp_dir], check=True)
-        log_action(f"Временные файлы в {temp_dir} успешно удалены.")
+
+        for root, dirs, files in os.walk(temp_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                try:
+                    subprocess.run([SDELETE_PATH, "-p", "3", file_path], check=True)
+                    log_action(f"Файл {file_path} успешно удалён.")
+                except Exception as e:
+                    log_action(f"Ошибка при удалении файла {file_path}: {e}", level="ERROR")
+
+            for dir in dirs:
+                dir_path = os.path.join(root, dir)
+                try:
+                    subprocess.run([SDELETE_PATH, "-p", "3", dir_path], check=True)
+                    log_action(f"Папка {dir_path} успешно очищена.")
+                except Exception as e:
+                    log_action(f"Ошибка при очистке папки {dir_path}: {e}", level="ERROR")
+
     except Exception as e:
         log_action(f"Ошибка при удалении временных файлов: {e}", level="ERROR")
 
+
 def delete_user_certificates():
     """
-    Удаляет пользовательские сертификаты.
+    Удаляет все сертификаты из хранилища "Личное" текущего пользователя.
     """
     try:
-        subprocess.run(["certutil", "-delstore", "my"], check=True)
-        log_action("Пользовательские сертификаты успешно удалены.")
+        # Получаем список сертификатов из хранилища "Личное" текущего пользователя
+        result = subprocess.run(
+            ["certutil", "-store", "-user", "My"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        output = result.stdout
+
+        # Ищем строки с серийными номерами сертификатов
+        serial_numbers = []
+        for line in output.splitlines():
+            if "Серийный номер:" in line:
+                serial_number = line.split(":")[1].strip()
+                serial_numbers.append(serial_number)
+
+        # Удаляем каждый сертификат по серийному номеру
+        if serial_numbers:
+            for serial in serial_numbers:
+                try:
+                    subprocess.run(
+                        ["certutil", "-user", "-delstore", "My", serial],
+                        check=True
+                    )
+                    log_action(f"Сертификат с серийным номером {serial} успешно удалён.")
+                except subprocess.CalledProcessError as e:
+                    log_action(f"Ошибка при удалении сертификата с серийным номером {serial}: {e}", level="ERROR")
+        else:
+            log_action("В хранилище 'Личное' текущего пользователя нет сертификатов для удаления.")
     except Exception as e:
-        log_action(f"Ошибка при удалении пользовательских сертификатов: {e}", level="ERROR")
+        log_action(f"Ошибка при работе с хранилищем 'Личное': {e}", level="ERROR")
+
 
 def clear_memory():
     """
     Очищает оперативную память с использованием RAMMap.
     """
     try:
-        rammap_path = "path\\to\\rammap.exe"  # Укажите путь к RAMMap
-        subprocess.run([rammap_path, "-E"], check=True)
+        rammap_path = "RAMMap64.exe"  # Укажите путь к RAMMap
+        subprocess.run([rammap_path, "-Et"], check=True)
         log_action("Оперативная память успешно очищена с помощью RAMMap.")
     except Exception as e:
         log_action(f"Ошибка при очистке оперативной памяти: {e}", level="ERROR")
 
+
 def empty_recycle_bin():
     """
-    Надежно очищает корзину Windows.
+    Надёжно очищает корзину Windows с использованием SDelete.
     """
+    recycle_bin_path = "C:\\$Recycle.Bin"
+    if not os.path.exists(recycle_bin_path):
+        log_action("Папка корзины не найдена.", level="ERROR")
+        return
+
     try:
-        recycle_bin_path = "C:\\$Recycle.Bin"
-        subprocess.run([SDELETE_PATH, "-p", "3", recycle_bin_path], check=True)
-        log_action("Корзина успешно очищена.")
+
+        for root, dirs, files in os.walk(recycle_bin_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                try:
+                    subprocess.run([SDELETE_PATH, "-p", "3", file_path], check=True)
+                    log_action(f"Файл {file_path} успешно удалён из корзины.")
+                except Exception as e:
+                    log_action(f"Ошибка при удалении файла {file_path}: {e}", level="ERROR")
+
+            for dir in dirs:
+                dir_path = os.path.join(root, dir)
+                try:
+                    subprocess.run([SDELETE_PATH, "-p", "3", dir_path], check=True)
+                    log_action(f"Папка {dir_path} успешно очищена из корзины.")
+                except Exception as e:
+                    log_action(f"Ошибка при очистке папки {dir_path}: {e}", level="ERROR")
+
+        log_action("Корзина успешно очищена с использованием SDelete.")
     except Exception as e:
         log_action(f"Ошибка при очистке корзины: {e}", level="ERROR")
+
 
 def delete():
     """
@@ -204,7 +305,8 @@ def delete():
         for file in data["files"]:
             file_path = os.path.join(browser_path, file)
             secure_delete_with_sdelete(file_path)
-            cover_file(file_path)  # Создаём ложный файл на месте удалённого
+
+
 
 def action(Default_action):
     """
@@ -237,3 +339,9 @@ def action(Default_action):
         empty_recycle_bin()
     else:
         log_action(f"Действие {Default_action} не поддерживается.", level="WARNING")
+
+
+# cover_file('C:\\Users\\Diplom\\Documents\\test.txt')
+# delete_user_certificates()
+# clear_memory()
+#empty_recycle_bin()
