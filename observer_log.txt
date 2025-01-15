@@ -173,3 +173,4 @@
 2024-12-10 00:45:43,250 - INFO - Новые окна: ['observer_log (3).txt — Блокнот', 'Письмо «Уведомление об НСД!» — observer — Яндекс Почта и еще 29 страниц — Профиль 1: Microsoft\u200b Edge']
 2024-12-10 00:45:48,382 - INFO - Новые процессы: ['SearchProtocolHost.exe', 'SearchProtocolHost.exe', 'SearchFilterHost.exe', 'smartscreen.exe']
 2024-12-10 00:46:35,712 - WARNING - Программа остановлена пользователем.
+2025-01-15 09:30:17,284 - WARNING - Процесс secret_prog.exe не найден. Начинаем защитные действия.

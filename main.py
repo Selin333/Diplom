@@ -9,9 +9,9 @@ from action import action
 # Основные настройки
 Canary_name = "secret_prog.exe"
 Default_action = "delete"
+Wait_time = 10  # Время ожидания перед запуском (в секундах)
 
 def check_canary():
-
     pythoncom.CoInitialize()
     c = wmi.WMI()
     try:
@@ -28,8 +28,16 @@ def check_canary():
         log_action(f"Ошибка при проверке процесса: {e}", level="ERROR")
         return False
 
-if __name__ == "__main__":
+def main(canary_name, default_action, wait_time):
+    global Canary_name, Default_action, Wait_time
+    Canary_name = canary_name
+    Default_action = default_action
+    Wait_time = wait_time
+
     try:
+        log_action(f"Ожидание {Wait_time} секунд перед выполнением действий. Дайте пользователю время для запуска канарейского процесса.")
+        time.sleep(Wait_time)
+
         if not check_canary():
             # Если процесс не найден, запускаются защитные действия
             action(Default_action)  # Выполнение действия (удаление или замена файлов)
@@ -40,3 +48,7 @@ if __name__ == "__main__":
         log_action("Программа остановлена пользователем.", level="WARNING")
     except Exception as e:
         log_action(f"Критическая ошибка: {e}", level="ERROR")
+
+if __name__ == "__main__":
+    # Для тестирования из интерфейса передайте параметры через main("canary_name", "action", wait_time)
+    pass
